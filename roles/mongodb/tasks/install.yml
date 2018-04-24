@@ -1,0 +1,24 @@
+---
+
+- name: Install prerequisites packages
+  apt:
+    state: present
+    name: python-pymongo
+
+- name: MONGODB | Add GPG key
+  apt_key:
+    state: present
+    keyserver: "{{ mongodb_apt_keyserver }}"
+    id: "{{ mongodb_apt_id }}"
+
+- name: MONGODB | Add repository
+  apt_repository:
+    state: present
+    repo: "{{ mongodb_apt_repository }}"
+    update_cache: True
+
+- name: MONGODB | Installation
+  apt:
+    state: present
+    name: mongodb-org
+  notify: Restart mongodb

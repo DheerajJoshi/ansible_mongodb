@@ -1,0 +1,8 @@
+---
+
+- name: Restart mongodb-compass
+  systemd:
+    daemon_reload: yes
+    name: mongodb-compass
+    state: restarted
+    enabled: yes

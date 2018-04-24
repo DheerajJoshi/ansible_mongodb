@@ -1,0 +1,16 @@
+---
+
+mongodb_apt_keyserver: keyserver.ubuntu.com
+mongodb_apt_id: 2930ADAE8CAF5059EE73BB4B58712A2291FA4AD5
+mongodb_apt_repository: "deb http://repo.mongodb.org/apt/{{ ansible_distribution|lower }} {{ ansible_distribution_release }}/mongodb-org/{{ mongodb_version }} multiverse"
+mongodb_version: 3.6
+
+mongodb_directory: /opt/mongodb
+mongodb:
+  admin_username: admin
+  admin_password: 9XngRF8znrMXJ944
+  storage_dbPath: "{{ mongodb_directory }}/data"
+  port: 27017
+  sharding_clusterRole: configsvr
+  replication_replSetName: rs-mongodbb
+  database: mongo

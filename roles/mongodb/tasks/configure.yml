@@ -1,0 +1,28 @@
+---
+
+- name: MONGODB | Create directories
+  file:
+    state: directory
+    path: "{{ item }}"
+    owner: mongodb
+    group: mongodb
+    mode: 0755
+  with_items:
+    - "{{ mongodb_directory }}"
+    - "{{ mongodb.storage_dbPath }}"
+
+- name: MONGODB | Deploy keyfile
+  copy:
+    src: "opt/mongodb/keyfile"
+    dest: "{{ mongodb_directory }}/keyfile"
+    owner: mongodb
+    group: mongodb
+    mode: 0400
+
+- name: MONGODB | Configuration
+  template:
+    src: "etc/mongod.conf.j2"
+    dest: "/etc/mongod.conf"
+    owner: root
+    group: root
+    mode: 0644

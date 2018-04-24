@@ -1,0 +1,11 @@
+var cfg = {
+  _id: '{{ mongodb.replication_replSetName }}',
+  members: [
+{% for host in groups['mongodb'] %}
+    { _id: {{ host[-1] }}, host: '{{ host }}:{{ mongodb.port }}', "priority" : {{ mongodb_priority }} },
+{% endfor %}
+  ]
+};
+
+var error = rs.initiate(cfg);
+printjson(error);

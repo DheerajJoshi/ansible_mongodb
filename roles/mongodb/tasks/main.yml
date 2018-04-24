@@ -1,0 +1,13 @@
+---
+
+- name: MONGODB | Installation
+  import_tasks: install.yml
+  tags: install-mongodb
+
+- name: MONGODB | Configuration
+  import_tasks: configure.yml
+  tags: update-mongodb
+
+- name: MONGODB | Replication
+  import_tasks: replication.yml
+  tags: update-replication

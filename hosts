@@ -1,0 +1,3 @@
+[mongodb]
+10.0.3.201 mongodb_priority=1
+10.0.3.202 mongodb_priority=0.5
